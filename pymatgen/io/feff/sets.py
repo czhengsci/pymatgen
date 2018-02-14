@@ -274,6 +274,12 @@ class FEFFDictSet(AbstractFeffInputSet):
             # the rest atoms
             distance_matrix = input_atoms.distance_matrix[0, :]
 
+            # The distance matrix is sometime disordered, need to sort distance matrix for
+            # retrieving of absorbing atom's index
+            distance_sort_index = np.argsort(distance_matrix)
+            distance_matrix = distance_matrix[distance_sort_index]
+            shell_species = shell_species[distance_sort_index]
+
             # Get radius value
             from math import ceil
             radius = int(ceil(input_atoms.get_distance(input_atoms.index(input_atoms[0]),

@@ -224,6 +224,10 @@ TITLE sites: 4
 
         shutil.rmtree(os.path.join('.', 'feff_dist_regen'))
 
+    def test_disorder_distance_matrix(self):
+        feff_disorder_inp = FEFFDictSet.from_directory(os.path.join(test_dir, 'feff_disorder_dist'))
+        self.assertTrue(feff_disorder_inp.absorbing_atom in [0, 2])
+
 
 if __name__ == '__main__':
     unittest.main()
